@@ -12,7 +12,8 @@ ALPHA = .1
 DECAY = .01
 MIN_PROB = 0.02
 MAX_PROB = 0.9
-PICKLE_FILE_NAME = 'agent-smith.pickle'
+PLAYER_MIN_HAND = 16
+PICKLE_FILE_NAME = 'agent-smith-v2.pickle'
 
 EPISODES = 300000
 
@@ -59,7 +60,10 @@ for e in tqdm(range(EPISODES)):
         if done:
             td_target = reward
             if reward > 0.9:
-                wins += 1
+                if state[0] >= PLAYER_MIN_HAND:
+                    wins += 1
+                else:
+                    reward = -1
             win_rate.append(wins)
             lose_rate.append(e - wins)
 
