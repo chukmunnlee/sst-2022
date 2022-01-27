@@ -20,5 +20,6 @@ value = np.dot(state, weights.T)
 print('dot product = ', value)
 
 value = np.multiply(term1, term2)
+value = term1 * term2
 print('pairwise multiply = ', value)
 
